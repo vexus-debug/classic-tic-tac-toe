@@ -11,8 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
+import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as ApiPublicBlogAutopilotRouteImport } from './routes/api/public/blog-autopilot'
 import { Route as ApiPublicTrackVisitorRouteImport } from './routes/api/public/track-visitor'
+import { Route as ApiPublicOutreachTrackClickRouteImport } from './routes/api/public/outreach/track-click'
+import { Route as ApiPublicOutreachTrackOpenRouteImport } from './routes/api/public/outreach/track-open'
+import { Route as ApiPublicOutreachUnsubscribeRouteImport } from './routes/api/public/outreach/unsubscribe'
+import { Route as ApiPublicOutreachWebhooksResendRouteImport } from './routes/api/public/outreach/webhooks/resend'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,6 +27,11 @@ const IndexRoute = IndexRouteImport.update({
 const SplatRoute = SplatRouteImport.update({
   id: '/$',
   path: '/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UnsubscribeRoute = UnsubscribeRouteImport.update({
+  id: '/unsubscribe',
+  path: '/unsubscribe',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicBlogAutopilotRoute = ApiPublicBlogAutopilotRouteImport.update({
@@ -34,45 +44,111 @@ const ApiPublicTrackVisitorRoute = ApiPublicTrackVisitorRouteImport.update({
   path: '/api/public/track-visitor',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicOutreachTrackClickRoute =
+  ApiPublicOutreachTrackClickRouteImport.update({
+    id: '/api/public/outreach/track-click',
+    path: '/api/public/outreach/track-click',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicOutreachTrackOpenRoute =
+  ApiPublicOutreachTrackOpenRouteImport.update({
+    id: '/api/public/outreach/track-open',
+    path: '/api/public/outreach/track-open',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicOutreachUnsubscribeRoute =
+  ApiPublicOutreachUnsubscribeRouteImport.update({
+    id: '/api/public/outreach/unsubscribe',
+    path: '/api/public/outreach/unsubscribe',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicOutreachWebhooksResendRoute =
+  ApiPublicOutreachWebhooksResendRouteImport.update({
+    id: '/api/public/outreach/webhooks/resend',
+    path: '/api/public/outreach/webhooks/resend',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/api/public/blog-autopilot': typeof ApiPublicBlogAutopilotRoute
   '/api/public/track-visitor': typeof ApiPublicTrackVisitorRoute
+  '/api/public/outreach/track-click': typeof ApiPublicOutreachTrackClickRoute
+  '/api/public/outreach/track-open': typeof ApiPublicOutreachTrackOpenRoute
+  '/api/public/outreach/unsubscribe': typeof ApiPublicOutreachUnsubscribeRoute
+  '/api/public/outreach/webhooks/resend': typeof ApiPublicOutreachWebhooksResendRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/api/public/blog-autopilot': typeof ApiPublicBlogAutopilotRoute
   '/api/public/track-visitor': typeof ApiPublicTrackVisitorRoute
+  '/api/public/outreach/track-click': typeof ApiPublicOutreachTrackClickRoute
+  '/api/public/outreach/track-open': typeof ApiPublicOutreachTrackOpenRoute
+  '/api/public/outreach/unsubscribe': typeof ApiPublicOutreachUnsubscribeRoute
+  '/api/public/outreach/webhooks/resend': typeof ApiPublicOutreachWebhooksResendRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/api/public/blog-autopilot': typeof ApiPublicBlogAutopilotRoute
   '/api/public/track-visitor': typeof ApiPublicTrackVisitorRoute
+  '/api/public/outreach/track-click': typeof ApiPublicOutreachTrackClickRoute
+  '/api/public/outreach/track-open': typeof ApiPublicOutreachTrackOpenRoute
+  '/api/public/outreach/unsubscribe': typeof ApiPublicOutreachUnsubscribeRoute
+  '/api/public/outreach/webhooks/resend': typeof ApiPublicOutreachWebhooksResendRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/$' | '/api/public/blog-autopilot' | '/api/public/track-visitor'
+    | '/'
+    | '/$'
+    | '/unsubscribe'
+    | '/api/public/blog-autopilot'
+    | '/api/public/track-visitor'
+    | '/api/public/outreach/track-click'
+    | '/api/public/outreach/track-open'
+    | '/api/public/outreach/unsubscribe'
+    | '/api/public/outreach/webhooks/resend'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$' | '/api/public/blog-autopilot' | '/api/public/track-visitor'
+  to:
+    | '/'
+    | '/$'
+    | '/unsubscribe'
+    | '/api/public/blog-autopilot'
+    | '/api/public/track-visitor'
+    | '/api/public/outreach/track-click'
+    | '/api/public/outreach/track-open'
+    | '/api/public/outreach/unsubscribe'
+    | '/api/public/outreach/webhooks/resend'
   id:
     | '__root__'
     | '/'
     | '/$'
+    | '/unsubscribe'
     | '/api/public/blog-autopilot'
     | '/api/public/track-visitor'
+    | '/api/public/outreach/track-click'
+    | '/api/public/outreach/track-open'
+    | '/api/public/outreach/unsubscribe'
+    | '/api/public/outreach/webhooks/resend'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
+  UnsubscribeRoute: typeof UnsubscribeRoute
   ApiPublicBlogAutopilotRoute: typeof ApiPublicBlogAutopilotRoute
   ApiPublicTrackVisitorRoute: typeof ApiPublicTrackVisitorRoute
+  ApiPublicOutreachTrackClickRoute: typeof ApiPublicOutreachTrackClickRoute
+  ApiPublicOutreachTrackOpenRoute: typeof ApiPublicOutreachTrackOpenRoute
+  ApiPublicOutreachUnsubscribeRoute: typeof ApiPublicOutreachUnsubscribeRoute
+  ApiPublicOutreachWebhooksResendRoute: typeof ApiPublicOutreachWebhooksResendRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -91,6 +167,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/unsubscribe': {
+      id: '/unsubscribe'
+      path: '/unsubscribe'
+      fullPath: '/unsubscribe'
+      preLoaderRoute: typeof UnsubscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/blog-autopilot': {
       id: '/api/public/blog-autopilot'
       path: '/api/public/blog-autopilot'
@@ -105,14 +188,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicTrackVisitorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/outreach/track-click': {
+      id: '/api/public/outreach/track-click'
+      path: '/api/public/outreach/track-click'
+      fullPath: '/api/public/outreach/track-click'
+      preLoaderRoute: typeof ApiPublicOutreachTrackClickRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/outreach/track-open': {
+      id: '/api/public/outreach/track-open'
+      path: '/api/public/outreach/track-open'
+      fullPath: '/api/public/outreach/track-open'
+      preLoaderRoute: typeof ApiPublicOutreachTrackOpenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/outreach/unsubscribe': {
+      id: '/api/public/outreach/unsubscribe'
+      path: '/api/public/outreach/unsubscribe'
+      fullPath: '/api/public/outreach/unsubscribe'
+      preLoaderRoute: typeof ApiPublicOutreachUnsubscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/outreach/webhooks/resend': {
+      id: '/api/public/outreach/webhooks/resend'
+      path: '/api/public/outreach/webhooks/resend'
+      fullPath: '/api/public/outreach/webhooks/resend'
+      preLoaderRoute: typeof ApiPublicOutreachWebhooksResendRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
+  UnsubscribeRoute: UnsubscribeRoute,
   ApiPublicBlogAutopilotRoute: ApiPublicBlogAutopilotRoute,
   ApiPublicTrackVisitorRoute: ApiPublicTrackVisitorRoute,
+  ApiPublicOutreachTrackClickRoute: ApiPublicOutreachTrackClickRoute,
+  ApiPublicOutreachTrackOpenRoute: ApiPublicOutreachTrackOpenRoute,
+  ApiPublicOutreachUnsubscribeRoute: ApiPublicOutreachUnsubscribeRoute,
+  ApiPublicOutreachWebhooksResendRoute: ApiPublicOutreachWebhooksResendRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
