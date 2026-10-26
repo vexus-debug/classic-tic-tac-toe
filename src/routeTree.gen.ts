@@ -10,33 +10,69 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SplatRouteImport } from './routes/$'
+import { Route as ApiPublicBlogAutopilotRouteImport } from './routes/api/public/blog-autopilot'
+import { Route as ApiPublicTrackVisitorRouteImport } from './routes/api/public/track-visitor'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SplatRoute = SplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicBlogAutopilotRoute = ApiPublicBlogAutopilotRouteImport.update({
+  id: '/api/public/blog-autopilot',
+  path: '/api/public/blog-autopilot',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicTrackVisitorRoute = ApiPublicTrackVisitorRouteImport.update({
+  id: '/api/public/track-visitor',
+  path: '/api/public/track-visitor',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/api/public/blog-autopilot': typeof ApiPublicBlogAutopilotRoute
+  '/api/public/track-visitor': typeof ApiPublicTrackVisitorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/api/public/blog-autopilot': typeof ApiPublicBlogAutopilotRoute
+  '/api/public/track-visitor': typeof ApiPublicTrackVisitorRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/api/public/blog-autopilot': typeof ApiPublicBlogAutopilotRoute
+  '/api/public/track-visitor': typeof ApiPublicTrackVisitorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/$' | '/api/public/blog-autopilot' | '/api/public/track-visitor'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/$' | '/api/public/blog-autopilot' | '/api/public/track-visitor'
+  id:
+    | '__root__'
+    | '/'
+    | '/$'
+    | '/api/public/blog-autopilot'
+    | '/api/public/track-visitor'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SplatRoute: typeof SplatRoute
+  ApiPublicBlogAutopilotRoute: typeof ApiPublicBlogAutopilotRoute
+  ApiPublicTrackVisitorRoute: typeof ApiPublicTrackVisitorRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +84,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
+      preLoaderRoute: typeof SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/blog-autopilot': {
+      id: '/api/public/blog-autopilot'
+      path: '/api/public/blog-autopilot'
+      fullPath: '/api/public/blog-autopilot'
+      preLoaderRoute: typeof ApiPublicBlogAutopilotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/track-visitor': {
+      id: '/api/public/track-visitor'
+      path: '/api/public/track-visitor'
+      fullPath: '/api/public/track-visitor'
+      preLoaderRoute: typeof ApiPublicTrackVisitorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SplatRoute: SplatRoute,
+  ApiPublicBlogAutopilotRoute: ApiPublicBlogAutopilotRoute,
+  ApiPublicTrackVisitorRoute: ApiPublicTrackVisitorRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
