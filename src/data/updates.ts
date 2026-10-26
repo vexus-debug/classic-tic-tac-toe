@@ -13,6 +13,17 @@ export interface UpdateEntry {
 
 export const updates: UpdateEntry[] = [
   {
+    version: "v1.9.9",
+    date: "October 27, 2026",
+    title: "Outreach tracking & unsubscribe",
+    kind: "feature",
+    items: [
+      { kind: "feature", text: "Outreach emails can now record opens and link clicks, with safe redirects to the original link." },
+      { kind: "feature", text: "One-click unsubscribe (Gmail/Yahoo compliant) plus a confirmation page; unsubscribed addresses are blocked from future campaigns." },
+      { kind: "feature", text: "Delivery, bounce and spam-complaint reports from Resend update campaign stats, and bounced or complaining addresses are blocked automatically." },
+    ],
+  },
+  {
     version: "v1.9.8",
     date: "October 27, 2026",
     title: "Email outreach foundation",
