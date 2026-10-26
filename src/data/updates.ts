@@ -13,6 +13,15 @@ export interface UpdateEntry {
 
 export const updates: UpdateEntry[] = [
   {
+    version: "v1.9.8",
+    date: "October 27, 2026",
+    title: "Email outreach foundation",
+    kind: "feature",
+    items: [
+      { kind: "feature", text: "Groundwork for Super Admin email campaigns: secure storage for campaigns, recipients, open/click activity and an unsubscribe block list." },
+    ],
+  },
+  {
     version: "v1.9.7",
     date: "October 26, 2026",
     title: "Cleaner dental pages",
