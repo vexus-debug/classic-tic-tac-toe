@@ -80,7 +80,7 @@ export default function AdminOutreach() {
     return t;
   }, [campaigns]);
 
-  const act = async (fn: typeof launchOutreachCampaign, id: string, msg: string) => {
+  const act = async (fn: (a: { data: { token: string; campaignId: string } }) => Promise<unknown>, id: string, msg: string) => {
     try { await fn({ data: { token: await token(), campaignId: id } }); toast({ title: msg }); qc.invalidateQueries({ queryKey: ["outreach-campaigns"] }); }
     catch (e) { toast({ title: "Could not do that", description: (e as Error).message, variant: "destructive" }); }
   };
