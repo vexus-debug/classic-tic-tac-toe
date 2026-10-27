@@ -2901,6 +2901,27 @@ export type Database = {
         }
         Relationships: []
       }
+      outreach_cron_config: {
+        Row: {
+          created_at: string
+          endpoint: string
+          id: boolean
+          secret: string
+        }
+        Insert: {
+          created_at?: string
+          endpoint?: string
+          id?: boolean
+          secret?: string
+        }
+        Update: {
+          created_at?: string
+          endpoint?: string
+          id?: boolean
+          secret?: string
+        }
+        Relationships: []
+      }
       outreach_events: {
         Row: {
           campaign_id: string
