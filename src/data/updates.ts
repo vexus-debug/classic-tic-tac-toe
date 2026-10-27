@@ -13,6 +13,18 @@ export interface UpdateEntry {
 
 export const updates: UpdateEntry[] = [
   {
+    version: "v2.0.0",
+    date: "October 27, 2026",
+    title: "Outreach campaign sending",
+    kind: "feature",
+    items: [
+      { kind: "feature", text: "Super admins can send outreach campaigns through Resend in safe batches, with pause and resume." },
+      { kind: "feature", text: "Emails are personalised with merge tags like {{first_name}} and {{clinic_name}}, with fallbacks." },
+      { kind: "feature", text: "Every email carries one-click unsubscribe headers, open tracking and click tracking automatically." },
+      { kind: "feature", text: "Blocked (unsubscribed, bounced or complaining) addresses are skipped before sending, and test emails can be sent to your own inbox." },
+    ],
+  },
+  {
     version: "v1.9.9",
     date: "October 27, 2026",
     title: "Outreach tracking & unsubscribe",
