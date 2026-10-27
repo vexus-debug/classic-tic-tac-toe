@@ -5,7 +5,7 @@ import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent,
   SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarFooter,
 } from "@/components/ui/sidebar";
-import { LayoutDashboard, Building2, Users, BarChart3, LogOut, Shield, ScrollText, CreditCard, DollarSign, Megaphone, Ticket, Flag, Settings, Download, GitBranch, HardDrive, Bell, Activity, Palette, Radio, PenLine, Globe } from "lucide-react";
+import { LayoutDashboard, Building2, Users, BarChart3, LogOut, Shield, ScrollText, CreditCard, DollarSign, Megaphone, Ticket, Flag, Settings, Download, GitBranch, HardDrive, Bell, Activity, Palette, Radio, PenLine, Globe, Mail } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import clinexusLogoWhiteAsset from "@/assets/site/clinexus-logo-white.png";
 
@@ -26,6 +26,7 @@ const adminNav = [
   { title: "Onboarding", path: "/admin/onboarding", icon: GitBranch, group: "Insights" },
   { title: "Announcements", path: "/admin/announcements", icon: Megaphone, group: "Comms" },
   { title: "Support", path: "/admin/support", icon: Ticket, group: "Comms" },
+  { title: "Email Outreach", path: "/admin/outreach", icon: Mail, group: "Comms" },
   { title: "Push Notifications", path: "/admin/push", icon: Megaphone, group: "Comms" },
   { title: "Notifications", path: "/admin/notification-logs", icon: Bell, group: "Comms" },
   { title: "Blog Studio", path: "/admin/articles", icon: PenLine, group: "Content" },

@@ -14,6 +14,7 @@ import { Route as SplatRouteImport } from './routes/$'
 import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as ApiPublicBlogAutopilotRouteImport } from './routes/api/public/blog-autopilot'
 import { Route as ApiPublicTrackVisitorRouteImport } from './routes/api/public/track-visitor'
+import { Route as ApiPublicOutreachDispatchRouteImport } from './routes/api/public/outreach/dispatch'
 import { Route as ApiPublicOutreachTrackClickRouteImport } from './routes/api/public/outreach/track-click'
 import { Route as ApiPublicOutreachTrackOpenRouteImport } from './routes/api/public/outreach/track-open'
 import { Route as ApiPublicOutreachUnsubscribeRouteImport } from './routes/api/public/outreach/unsubscribe'
@@ -44,6 +45,12 @@ const ApiPublicTrackVisitorRoute = ApiPublicTrackVisitorRouteImport.update({
   path: '/api/public/track-visitor',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicOutreachDispatchRoute =
+  ApiPublicOutreachDispatchRouteImport.update({
+    id: '/api/public/outreach/dispatch',
+    path: '/api/public/outreach/dispatch',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiPublicOutreachTrackClickRoute =
   ApiPublicOutreachTrackClickRouteImport.update({
     id: '/api/public/outreach/track-click',
@@ -75,6 +82,7 @@ export interface FileRoutesByFullPath {
   '/unsubscribe': typeof UnsubscribeRoute
   '/api/public/blog-autopilot': typeof ApiPublicBlogAutopilotRoute
   '/api/public/track-visitor': typeof ApiPublicTrackVisitorRoute
+  '/api/public/outreach/dispatch': typeof ApiPublicOutreachDispatchRoute
   '/api/public/outreach/track-click': typeof ApiPublicOutreachTrackClickRoute
   '/api/public/outreach/track-open': typeof ApiPublicOutreachTrackOpenRoute
   '/api/public/outreach/unsubscribe': typeof ApiPublicOutreachUnsubscribeRoute
@@ -86,6 +94,7 @@ export interface FileRoutesByTo {
   '/unsubscribe': typeof UnsubscribeRoute
   '/api/public/blog-autopilot': typeof ApiPublicBlogAutopilotRoute
   '/api/public/track-visitor': typeof ApiPublicTrackVisitorRoute
+  '/api/public/outreach/dispatch': typeof ApiPublicOutreachDispatchRoute
   '/api/public/outreach/track-click': typeof ApiPublicOutreachTrackClickRoute
   '/api/public/outreach/track-open': typeof ApiPublicOutreachTrackOpenRoute
   '/api/public/outreach/unsubscribe': typeof ApiPublicOutreachUnsubscribeRoute
@@ -98,6 +107,7 @@ export interface FileRoutesById {
   '/unsubscribe': typeof UnsubscribeRoute
   '/api/public/blog-autopilot': typeof ApiPublicBlogAutopilotRoute
   '/api/public/track-visitor': typeof ApiPublicTrackVisitorRoute
+  '/api/public/outreach/dispatch': typeof ApiPublicOutreachDispatchRoute
   '/api/public/outreach/track-click': typeof ApiPublicOutreachTrackClickRoute
   '/api/public/outreach/track-open': typeof ApiPublicOutreachTrackOpenRoute
   '/api/public/outreach/unsubscribe': typeof ApiPublicOutreachUnsubscribeRoute
@@ -111,6 +121,7 @@ export interface FileRouteTypes {
     | '/unsubscribe'
     | '/api/public/blog-autopilot'
     | '/api/public/track-visitor'
+    | '/api/public/outreach/dispatch'
     | '/api/public/outreach/track-click'
     | '/api/public/outreach/track-open'
     | '/api/public/outreach/unsubscribe'
@@ -122,6 +133,7 @@ export interface FileRouteTypes {
     | '/unsubscribe'
     | '/api/public/blog-autopilot'
     | '/api/public/track-visitor'
+    | '/api/public/outreach/dispatch'
     | '/api/public/outreach/track-click'
     | '/api/public/outreach/track-open'
     | '/api/public/outreach/unsubscribe'
@@ -133,6 +145,7 @@ export interface FileRouteTypes {
     | '/unsubscribe'
     | '/api/public/blog-autopilot'
     | '/api/public/track-visitor'
+    | '/api/public/outreach/dispatch'
     | '/api/public/outreach/track-click'
     | '/api/public/outreach/track-open'
     | '/api/public/outreach/unsubscribe'
@@ -145,6 +158,7 @@ export interface RootRouteChildren {
   UnsubscribeRoute: typeof UnsubscribeRoute
   ApiPublicBlogAutopilotRoute: typeof ApiPublicBlogAutopilotRoute
   ApiPublicTrackVisitorRoute: typeof ApiPublicTrackVisitorRoute
+  ApiPublicOutreachDispatchRoute: typeof ApiPublicOutreachDispatchRoute
   ApiPublicOutreachTrackClickRoute: typeof ApiPublicOutreachTrackClickRoute
   ApiPublicOutreachTrackOpenRoute: typeof ApiPublicOutreachTrackOpenRoute
   ApiPublicOutreachUnsubscribeRoute: typeof ApiPublicOutreachUnsubscribeRoute
@@ -188,6 +202,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicTrackVisitorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/outreach/dispatch': {
+      id: '/api/public/outreach/dispatch'
+      path: '/api/public/outreach/dispatch'
+      fullPath: '/api/public/outreach/dispatch'
+      preLoaderRoute: typeof ApiPublicOutreachDispatchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/outreach/track-click': {
       id: '/api/public/outreach/track-click'
       path: '/api/public/outreach/track-click'
@@ -225,6 +246,7 @@ const rootRouteChildren: RootRouteChildren = {
   UnsubscribeRoute: UnsubscribeRoute,
   ApiPublicBlogAutopilotRoute: ApiPublicBlogAutopilotRoute,
   ApiPublicTrackVisitorRoute: ApiPublicTrackVisitorRoute,
+  ApiPublicOutreachDispatchRoute: ApiPublicOutreachDispatchRoute,
   ApiPublicOutreachTrackClickRoute: ApiPublicOutreachTrackClickRoute,
   ApiPublicOutreachTrackOpenRoute: ApiPublicOutreachTrackOpenRoute,
   ApiPublicOutreachUnsubscribeRoute: ApiPublicOutreachUnsubscribeRoute,
