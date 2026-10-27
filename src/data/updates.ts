@@ -13,6 +13,18 @@ export interface UpdateEntry {
 
 export const updates: UpdateEntry[] = [
   {
+    version: "v2.1.0",
+    date: "October 27, 2026",
+    title: "Email Outreach Studio",
+    kind: "feature",
+    items: [
+      { kind: "feature", text: "New Email Outreach page in the Super Admin panel with campaign stats: sent, open, click, bounce and unsubscribe rates." },
+      { kind: "feature", text: "Step-by-step campaign builder: sender details, CSV audience import with duplicate and block-list filtering, merge-tag editor with live preview, checklist and test email." },
+      { kind: "feature", text: "Launched campaigns send in the cloud in the background — no need to keep the browser open — with pause and resume." },
+      { kind: "feature", text: "Recipient inspector with per-person activity timeline, and a block list manager to search, add or unblock addresses." },
+    ],
+  },
+  {
     version: "v2.0.0",
     date: "October 27, 2026",
     title: "Outreach campaign sending",

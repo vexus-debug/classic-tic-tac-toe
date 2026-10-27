@@ -44,3 +44,21 @@ export const resumeOutreachCampaign = createServerFn({ method: "POST" })
     await db.from("outreach_campaigns").update({ status: "sending" }).eq("id", data.campaignId).eq("status", "paused");
     return { ok: true };
   });
+
+/** Starts background sending. The database wakes the cloud sender; no browser needed. */
+export const launchOutreachCampaign = createServerFn({ method: "POST" })
+  .inputValidator((d) => base.parse(d))
+  .handler(async ({ data }) => {
+    const db = await requireSuperAdmin(data.token);
+    const { data: c } = await db.from("outreach_campaigns").select("subject, html_content, status").eq("id", data.campaignId).maybeSingle();
+    if (!c) throw new Error("Campaign not found");
+    if (!c.subject.trim() || !c.html_content.trim()) throw new Error("Add a subject and email content first");
+    if (!["draft", "failed", "paused"].includes(c.status)) throw new Error(`Campaign is already ${c.status}`);
+    const { count } = await db.from("outreach_recipients").select("id", { count: "exact", head: true }).eq("campaign_id", data.campaignId);
+    if (!count) throw new Error("Add at least one recipient first");
+    await db.from("outreach_campaigns").update({
+      status: "sending", total_recipients: count,
+      ...(c.status === "draft" ? { started_at: new Date().toISOString() } : {}),
+    }).eq("id", data.campaignId);
+    return { ok: true, total: count };
+  });

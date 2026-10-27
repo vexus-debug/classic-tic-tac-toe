@@ -158,6 +158,7 @@ import AdminOnboardingFunnel from "./pages/admin/AdminOnboardingFunnel";
 import AdminStorageMonitoring from "./pages/admin/AdminStorageMonitoring";
 import AdminNotificationLogs from "./pages/admin/AdminNotificationLogs";
 import AdminPushNotifications from "./pages/admin/AdminPushNotifications";
+import AdminOutreach from "./pages/admin/AdminOutreach";
 import InboxMessagePage from "./pages/InboxMessagePage";
 import AdminHealthMonitoring from "./pages/admin/AdminHealthMonitoring";
 import AdminWhiteLabel from "./pages/admin/AdminWhiteLabel";
@@ -288,6 +289,7 @@ const App = () => (
               <Route path="inbox" element={<InboxMessagePage />} />
               <Route path="inbox/:id" element={<InboxMessagePage />} />
               <Route path="admin/push" element={<AdminRoute><AdminPushNotifications /></AdminRoute>} />
+              <Route path="admin/outreach" element={<AdminRoute><AdminOutreach /></AdminRoute>} />
               <Route path="admin/articles" element={<AdminRoute><AdminArticles /></AdminRoute>} />
               <Route path="admin/notification-logs" element={<AdminRoute><AdminNotificationLogs /></AdminRoute>} />
               <Route path="admin/feature-flags" element={<AdminRoute><AdminFeatureFlags /></AdminRoute>} />
